@@ -14,8 +14,16 @@ repositories {
 dependencies {
 
     providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
+
     compile group: 'org.springframework', name: 'spring-core', version: '4.3.4.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.4.RELEASE'
+
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901.jdbc4'
+
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.5.Final'
 
 }
