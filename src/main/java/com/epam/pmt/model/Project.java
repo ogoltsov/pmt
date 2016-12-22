@@ -2,6 +2,7 @@ package com.epam.pmt.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -19,6 +20,8 @@ public class Project extends BaseEntity {
     @Column(name = "ending_project_date")
     private Date endDate;
 
+    @OneToMany(mappedBy = "project")
+    private List<Task> tasks;
 
     public String getTitle() {
         return title;
