@@ -19,12 +19,9 @@ public class HelloController {
         this.dao = dao;
     }
 
-
-
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
         model.put("name", "Ogoltsov");
         return "index";
     }
-
 }
