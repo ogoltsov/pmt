@@ -1,7 +1,7 @@
 package com.epam.pmt.controller;
 
-import com.epam.pmt.dao.Dao;
 import com.epam.pmt.model.Project;
+import com.epam.pmt.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class HelloController {
 
-    private Dao<Project> dao;
+    private Repository<Project> repository;
 
     @Autowired
-    public void setDao(Dao<Project> dao) {
-        this.dao = dao;
+    public void setRepository(Repository<Project> repository) {
+        this.repository = repository;
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
