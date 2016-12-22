@@ -1,14 +1,17 @@
 package com.epam.pmt.dao;
 
 import com.epam.pmt.model.Project;
+import com.epam.pmt.model.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Repository
+@Repository("projectRepository")
+@Transactional
 public class ProjectDaoImpl implements Dao<Project> {
 
     private SessionFactory sessionFactory;
@@ -21,7 +24,7 @@ public class ProjectDaoImpl implements Dao<Project> {
     @Override
     public List<Project> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createNamedQuery("Project.findAll", Project.class).list();
+        return (List<Project>) session.createCriteria(Project.class).list();
     }
 
     @Override
