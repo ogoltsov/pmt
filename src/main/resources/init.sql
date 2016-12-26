@@ -1,26 +1,18 @@
 DROP FUNCTION IF EXISTS create_comments();
-
-DROP TABLE IF EXISTS Project_comments;
-DROP TABLE IF EXISTS Task_type;
-DROP TABLE IF EXISTS Project_tasks;
 DROP TABLE IF EXISTS Task_comments;
+DROP TABLE IF EXISTS Project_comments;
 DROP TABLE IF EXISTS Task;
+DROP TABLE IF EXISTS Project_tasks;
+DROP TABLE IF EXISTS Task_type;
 DROP TABLE IF EXISTS Projects;
 DROP TABLE IF EXISTS Priority_level;
 DROP TABLE IF EXISTS Comments;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Role;
 DROP TABLE IF EXISTS Status;
-
 DROP SEQUENCE IF EXISTS all_id_seq;
-DROP SEQUENCE IF EXISTS comments_id_seq;
-DROP SEQUENCE IF EXISTS priority_level_id_seq;
-DROP SEQUENCE IF EXISTS projects_id_seq;
-DROP SEQUENCE IF EXISTS role_id_seq;
-DROP SEQUENCE IF EXISTS status_id_seq;
-DROP SEQUENCE IF EXISTS task_id_seq;
-DROP SEQUENCE IF EXISTS task_type_id_seq;
-DROP SEQUENCE IF EXISTS users_id_seq;
+
+CREATE SEQUENCE all_id_seq NO MAXVALUE;
 
 CREATE TABLE Projects (
   id                  INTEGER DEFAULT nextval('all_id_seq'),
@@ -261,52 +253,55 @@ INSERT INTO Projects (title, description, start_project_date, ending_project_dat
           random() * (TIMESTAMP '2016-12-31 23:59:00' -
                       TIMESTAMP '2016-01-01 00:00:01'))
 );
-CREATE OR REPLACE FUNCTION create_tasks()
-  RETURNS VOID AS $$
-DECLARE
-  counter INTEGER := 0;
-BEGIN
-  LOOP
-    INSERT INTO Task (title, description, created_date, start_date, ending_date, status_id, priority_id, task_type_id)
-    VALUES (
-      (concat('Some task title', counter)),
-      (concat('Some task description', counter)),
-      (
-        SELECT TIMESTAMP '2016-01-01 00:00:01' +
-               random() * (TIMESTAMP '2016-12-31 23:59:00' -
-                           TIMESTAMP '2016-10-01 00:00:01')
-      ),
-      (
-        SELECT TIMESTAMP '2016-06-03 00:00:01' +
-               random() * (TIMESTAMP '2016-12-31 23:59:00' -
-                           TIMESTAMP '2016-06-01 00:00:01')
-      ),
-      (SELECT TIMESTAMP '2016-06-01 00:00:01' +
-              random() * (TIMESTAMP '2016-12-31 23:59:00' -
-                          TIMESTAMP '2016-01-01 00:00:01')),
-      (
-        SELECT S.id
-        FROM Status S
-        OFFSET floor(random() * 2)
-        LIMIT 1
-      ),
-      (
-        SELECT P.id
-        FROM Priority_level P
-        OFFSET floor(random() * 2)
-        LIMIT 1
-      ),
-      (
-        SELECT TP.id
-        FROM Task_type TP
-        ORDER BY random()
-        LIMIT 1
-      )
-    );
-    EXIT WHEN counter = 25;
-  END LOOP;
-END;
-$$ LANGUAGE plpgsql;
+-- BUG, LOOK PMT-9
+-- CREATE OR REPLACE FUNCTION create_tasks()
+--   RETURNS VOID AS $$
+-- DECLARE
+--   counter INTEGER := 0;
+-- BEGIN
+--   LOOP
+--     INSERT INTO Task (title, description, created_date, start_date, ending_date, status_id, priority_id, task_type_id)
+--     VALUES (
+--       (concat('Some task title', counter)),
+--       (concat('Some task description', counter)),
+--       (
+--         SELECT TIMESTAMP '2016-01-01 00:00:01' +
+--                random() * (TIMESTAMP '2016-12-31 23:59:00' -
+--                            TIMESTAMP '2016-10-01 00:00:01')
+--       ),
+--       (
+--         SELECT TIMESTAMP '2016-06-03 00:00:01' +
+--                random() * (TIMESTAMP '2016-12-31 23:59:00' -
+--                            TIMESTAMP '2016-06-01 00:00:01')
+--       ),
+--       (SELECT TIMESTAMP '2016-06-01 00:00:01' +
+--               random() * (TIMESTAMP '2016-12-31 23:59:00' -
+--                           TIMESTAMP '2016-01-01 00:00:01')),
+--       (
+--         SELECT S.id
+--         FROM Status S
+--         OFFSET floor(random() * 2)
+--         LIMIT 1
+--       ),
+--       (
+--         SELECT P.id
+--         FROM Priority_level P
+--         OFFSET floor(random() * 2)
+--         LIMIT 1
+--       ),
+--       (
+--         SELECT TP.id
+--         FROM Task_type TP
+--         ORDER BY random()
+--         LIMIT 1
+--       )
+--     );
+--     EXIT WHEN counter = 25;
+--   END LOOP;
+-- END;
+-- $$ LANGUAGE plpgsql;
+
+-- SELECT create_tasks();
 
 -- MAKE FEW TIMES: BEGIN
 INSERT INTO Project_comments (project_id, comment_id) VALUES
