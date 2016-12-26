@@ -30,7 +30,8 @@ public class Task extends BaseEntity {
     @JoinColumn(name = "priority_id")
     private Priority priority;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     public String getTitle() {

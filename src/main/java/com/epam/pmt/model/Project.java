@@ -20,7 +20,7 @@ public class Project extends BaseEntity {
     @Column(name = "ending_project_date")
     private Date endDate;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private List<Task> tasks;
 
     public String getTitle() {
@@ -53,6 +53,14 @@ public class Project extends BaseEntity {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
