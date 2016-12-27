@@ -1,7 +1,7 @@
 package com.epam.pmt.service;
 
 import com.epam.pmt.model.Project;
-import com.epam.pmt.model.Task;
+import com.epam.pmt.model.Status;
 import com.epam.pmt.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,8 @@ import java.util.List;
 public class ProjectService {
 
     private Repository<Project> projectRepository;
-    private Repository<Task> taskRepository;
+
+    private Repository<Status> statusRepository;
 
     @Autowired
     public void setProjectRepository(Repository<Project> projectRepository) {
@@ -22,8 +23,8 @@ public class ProjectService {
     }
 
     @Autowired
-    public void setTaskRepository(Repository<Task> taskRepository) {
-        this.taskRepository = taskRepository;
+    public void setStatusRepository(Repository<Status> statusRepository) {
+        this.statusRepository = statusRepository;
     }
 
     public List<Project> getProjectsList() {
@@ -31,10 +32,16 @@ public class ProjectService {
         return new ArrayList<>(projects);
     }
 
-    public Project findProgectById(int id) {
+    public Project findProjectById(int id) {
         return projectRepository.findById(id);
     }
 
 
+    public void deleteProject(int id) {
+        projectRepository.delete(projectRepository.findById(id));
+    }
 
+    public List<Status> getStatusList() {
+        return new ArrayList<>(statusRepository.findAll());
+    }
 }

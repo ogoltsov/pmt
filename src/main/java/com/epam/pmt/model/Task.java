@@ -30,7 +30,7 @@ public class Task extends BaseEntity {
     @JoinColumn(name = "priority_id")
     private Priority priority;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id")
     private Project project;
 
