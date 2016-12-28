@@ -6,6 +6,7 @@
 </head>
 <body>
 <c:forEach var="project" items="${projects}">
+    <p><b>${project.id}</b></p>
     <p>${project}</p>
     <p>${project.description.length()}</p>
 </c:forEach>
