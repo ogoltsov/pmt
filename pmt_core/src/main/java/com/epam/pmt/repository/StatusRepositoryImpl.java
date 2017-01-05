@@ -2,7 +2,6 @@ package com.epam.pmt.repository;
 
 import com.epam.pmt.model.Status;
 
-import javax.ejb.Startup;
 import java.util.Collection;
 
 public class StatusRepositoryImpl extends AbstractRepository<Status> {

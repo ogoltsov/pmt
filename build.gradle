@@ -1,37 +1,25 @@
-group 'com.epam'
-version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-apply plugin: 'war'
+subprojects {
+    apply plugin: "java"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 
-repositories {
-    mavenCentral()
+    dependencies {
+        compile group: 'org.springframework', name: 'spring-core', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-web', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-tx', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-orm', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-test', version: '4.3.4.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
 }
-
-dependencies {
-
-    providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
-
-    compile group: 'org.springframework', name: 'spring-core', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-web', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-tx', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-test', version: '4.3.4.RELEASE'
-
-    compile group: 'postgresql', name: 'postgresql', version: '9.1-901.jdbc4'
-
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.11.Final'
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
-    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
-
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.5'
-}
-
-war {
-    archiveName 'PMT.war'
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.2.1"
 }

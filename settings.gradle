@@ -1,1 +1,5 @@
-rootProject.name = 'pmt'
+rootProject.name = 'PMT'
+
+include 'pmt_core'
+include 'pmt_bugtracker'
+
