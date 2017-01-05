@@ -1,25 +1,25 @@
-group 'com.epam'
-version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-apply plugin: 'war'
+subprojects {
+    apply plugin: "java"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 
-repositories {
-    mavenCentral()
+    dependencies {
+        compile group: 'org.springframework', name: 'spring-core', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-web', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-tx', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-orm', version: '4.3.4.RELEASE'
+        compile group: 'org.springframework', name: 'spring-test', version: '4.3.4.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
 }
-
-dependencies {
-
-    providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
-    compile group: 'org.springframework', name: 'spring-core', version: '4.3.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.4.RELEASE'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.5.Final'
-
-}
-
-war {
-    archiveName 'PMT.war'
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.2.1"
 }
