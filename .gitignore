@@ -1,4 +1,7 @@
 *.iml
 .idea/
-build/
+out/
 .gradle/
+pmt_bugtracker/build/
+pmt_core/build/
+gradle/
