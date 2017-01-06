@@ -21,7 +21,7 @@ public class HelloController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
-        model.put("name", "Ogoltsov");
+        model.put("name", "K!");
         return "index";
     }
 }
