@@ -1,6 +1,4 @@
-package com.epam.pmt.model;
-
-import org.hibernate.annotations.GeneratorType;
+package com.epam.pmt.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

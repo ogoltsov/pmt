@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.epam.pmt")
+@ComponentScan(basePackages = {"com.epam.pmt"})
 public class AppConfig {
 
     @Bean

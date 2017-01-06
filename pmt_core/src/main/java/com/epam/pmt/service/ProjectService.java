@@ -1,7 +1,7 @@
 package com.epam.pmt.service;
 
-import com.epam.pmt.model.Project;
-import com.epam.pmt.model.Status;
+import com.epam.pmt.domain.Project;
+import com.epam.pmt.domain.Status;
 import com.epam.pmt.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

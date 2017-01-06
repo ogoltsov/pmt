@@ -1,6 +1,7 @@
 package com.epam.pmt.repository;
 
-import com.epam.pmt.model.BaseEntity;
+
+import com.epam.pmt.domain.BaseEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

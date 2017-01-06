@@ -1,6 +1,7 @@
 package com.epam.pmt.controller;
 
-import com.epam.pmt.model.Project;
+
+import com.epam.pmt.domain.Project;
 import com.epam.pmt.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

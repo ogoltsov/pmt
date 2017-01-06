@@ -1,4 +1,4 @@
-package com.epam.pmt.model;
+package com.epam.pmt.domain;
 
 import javax.persistence.*;
 import java.util.Date;
