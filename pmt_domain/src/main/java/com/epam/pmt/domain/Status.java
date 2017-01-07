@@ -1,29 +1,18 @@
-package com.epam.pmt.model;
+package com.epam.pmt.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
-public class Role extends BaseEntity {
+@Table(name = "status")
+public class Status extends BaseEntity {
 
-    @Column(name = "access_level")
-    private Integer accessLevel;
-
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    public Role() {
-    }
-
-    public Integer getAccessLevel() {
-        return accessLevel;
-    }
-
-    public void setAccessLevel(Integer accessLevel) {
-        this.accessLevel = accessLevel;
-    }
+    @Column(name = "description", nullable = false)
+    private String description;
 
     public String getTitle() {
         return title;
@@ -31,6 +20,14 @@ public class Role extends BaseEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -47,9 +44,9 @@ public class Role extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Role{" +
-                "accessLevel=" + accessLevel +
-                ", title='" + title + '\'' +
+        return "Status{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

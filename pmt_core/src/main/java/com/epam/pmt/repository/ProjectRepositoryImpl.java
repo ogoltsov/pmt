@@ -1,6 +1,7 @@
 package com.epam.pmt.repository;
 
-import com.epam.pmt.model.Project;
+
+import com.epam.pmt.domain.Project;
 import org.hibernate.Hibernate;
 
 import javax.transaction.Transactional;

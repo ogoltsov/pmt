@@ -1,6 +1,6 @@
 package com.epam.pmt.repository;
 
-import com.epam.pmt.model.Status;
+import com.epam.pmt.domain.Status;
 
 import java.util.Collection;
 
