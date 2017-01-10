@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -28,8 +27,7 @@ public class ProjectService {
     }
 
     public List<Project> getProjectsList() {
-        Collection<Project> projects = projectRepository.findAll();
-        return new ArrayList<>(projects);
+        return new ArrayList<>(projectRepository.findAll());
     }
 
     public Project findProjectById(int id) {
