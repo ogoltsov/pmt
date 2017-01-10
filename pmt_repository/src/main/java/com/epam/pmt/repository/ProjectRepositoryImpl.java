@@ -30,9 +30,7 @@ public class ProjectRepositoryImpl extends AbstractRepository<Project> {
 
     @Override
     public boolean delete(Object o) {
-
         getSession().delete(o);
-
         return false;
     }
 }
