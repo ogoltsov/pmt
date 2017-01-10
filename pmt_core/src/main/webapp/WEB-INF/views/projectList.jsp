@@ -9,6 +9,8 @@
     <p><b>${project.id}</b></p>
     <p>${project}</p>
     <p>${project.description.length()}</p>
+    <a href="/project/${project.id}">View</a>
+    <hr>
 </c:forEach>
 </body>
 </html>

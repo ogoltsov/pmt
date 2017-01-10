@@ -4,6 +4,7 @@ import com.epam.pmt.domain.Project;
 import com.epam.pmt.domain.Status;
 import com.epam.pmt.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,11 +18,13 @@ public class ProjectService {
     private Repository<Status> statusRepository;
 
     @Autowired
+    @Qualifier("projectRepository")
     public void setProjectRepository(Repository<Project> projectRepository) {
         this.projectRepository = projectRepository;
     }
 
     @Autowired
+    @Qualifier("statusRepository")
     public void setStatusRepository(Repository<Status> statusRepository) {
         this.statusRepository = statusRepository;
     }

@@ -3,12 +3,14 @@ package com.epam.pmt.repository;
 
 import com.epam.pmt.domain.Project;
 import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
 
 @org.springframework.stereotype.Repository
 @Transactional
+@Qualifier("projectRepository")
 public class ProjectRepositoryImpl extends AbstractRepository<Project> {
 
     @Override

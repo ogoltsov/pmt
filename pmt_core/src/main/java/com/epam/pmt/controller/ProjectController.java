@@ -38,7 +38,7 @@ public class ProjectController {
         return "projectPage";
     }
 
-    @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
     public ModelAndView deleteProject(@PathVariable(name = "id", required = true) int id, ModelMap model) {
         service.deleteProject(id);
         return new ModelAndView("redirect:/project/");
