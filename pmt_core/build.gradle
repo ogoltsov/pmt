@@ -21,6 +21,7 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.5'
 
     compile project(":pmt_domain")
+    compile project(":pmt_repository")
     compile project(":pmt_bugtracker")
 }
 

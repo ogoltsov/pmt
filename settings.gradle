@@ -1,5 +1,6 @@
 rootProject.name = 'PMT'
 
+include 'pmt_repository'
 include 'pmt_core'
 include 'pmt_bugtracker'
 include 'pmt_domain'
