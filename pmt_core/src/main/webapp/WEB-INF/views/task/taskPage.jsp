@@ -16,7 +16,7 @@
 <p>Project: ${task.project}</p>
 <hr>
 <form method="get">
-    <button type="submit" formaction="/task/${task.id}/delete">Delete this SHIT!</button>
+    <button type="submit" formaction="/task/${task.id}/delete/">Delete this SHIT!</button>
     <button type="submit" formaction="/project/${task.project.id}/">Back to project!</button>
 </form>
 

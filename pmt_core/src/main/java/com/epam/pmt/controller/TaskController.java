@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(path = "/task/")
@@ -26,6 +27,14 @@ public class TaskController {
         Task task = repository.findById(id);
         model.put("task", task);
         return "task/taskPage";
+    }
+
+
+    @RequestMapping(path = "/{id}/delete/")
+    public ModelAndView deleteTask(@PathVariable int id, ModelMap model) {
+        Task task = repository.findById(id);
+        repository.delete(task);
+        return new ModelAndView("redirect:/project/" + task.getProject().getId());
     }
 
 }
